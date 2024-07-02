@@ -1,0 +1,31 @@
+
+  text	   data	    bss	    dec	    hex	filename
+
+
+ 5692	    268	   2036	   7996	   1f3c	soma_stm32_master.elf   
+
+
+
+-----------
+
+
+text 是代码段，用来存放程序执行代码的一块内存区域。
+data(data segment)段，是已经初始化的变量，属于静态内存分配。
+bss(block started by symbol)段，是未初始化的全局变量，属于静态内存分配。
+
+dec(decimal即十进制数)，是 text、data 和 bss 的算术和。
+hex(hexadecimal即十六进制)，其对应的数值是 dec 的十六进制格式。
+
+-----------
+
+我的理解：
+    rom空间大小应是：   text  +  data
+    ram空间大小应是：   bss
+    dec和hex：             都是前面三者之和
+
+
+
+
+
+
+
