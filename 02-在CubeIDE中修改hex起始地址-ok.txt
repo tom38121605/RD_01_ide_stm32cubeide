@@ -3,8 +3,21 @@
 1.  在 STM32C011F6UX_FLASH.ld 中 ，修改运行起始地址
 
     //FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 32K
-     //实操中，ld文件中不能用//来注释
+     /* ld文件中不能用“//”来注释   */
     FLASH    (rx)    : ORIGIN = 0x8003000,   LENGTH = 20K
+
+
+1. 下面是ommo工程的参考
+
+    STM32C011F6UX_FLASH.ld
+ 
+    MEMORY
+    {
+        RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 6K
+        FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 30K
+        RAM    (xrw)    : ORIGIN = 0x20000004,   LENGTH = (6K - 4)  /* First word in the RAM is reserved for the booloader entry flag. */
+        FLASH    (rx)    : ORIGIN = 0x8000800,   LENGTH = (28K - 4) /* Last word is reserved for application check word. */
+    }
 
 
 2.  直接在main中添加下面一句    （推荐）
